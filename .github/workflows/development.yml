@@ -1,0 +1,47 @@
+name: development
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - uses: actions/setup-go@v1
+      with:
+        go-version: '1.14.3'
+
+    - name: build
+      env:
+        GOPATH: "/tmp"
+        PATH: "/bin:/usr/bin:/tmp/bin"
+      run: |
+          mkdir -p /tmp/tidio
+          go get github.com/gregoryv/stamp/cmd/stamp
+          go generate ./...
+          go build -o /tmp/wrench/wrench ./cmd/wrench
+          cp -r nginx.conf install.sh wrench.service /tmp/wrench
+
+    - name: test
+      env:
+        GOPATH: "/tmp"
+      run: |
+          go get github.com/gregoryv/uncover/cmd/uncover
+          go test -coverprofile /tmp/c.out ./...
+          $GOPATH/bin/uncover /tmp/c.out
+
+    - name: deploy
+      env:
+        LINODE_PRIVATE_KEY: ${{secrets.LINODE_PRIVATE_KEY}}
+      run: |
+        mkdir -p $HOME/.ssh
+        go run ./internal/cmd/setupGithubSSH/
+        rsync -av --delete-after /tmp/wrench/ ${{secrets.LINODE_USER}}@tidio.preferit.se:wrench/
+        ssh ${{secrets.LINODE_USER}}@tidio.preferit.se 'cd wrench; sudo ./install.sh'
