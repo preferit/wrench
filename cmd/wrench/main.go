@@ -12,7 +12,7 @@ import (
 
 func main() {
 	cli := cmdline.New(os.Args...)
-	out := cli.Option("-o").String("/tmp")
+	cli.Option("-o").String("/tmp") // deprecated, here until systemd is updated
 	serve := cli.Flag("-s, --serve")
 	bind := cli.Option("-b, --bind").String(":8081")
 	if err := cli.Error(); err != nil {
@@ -20,10 +20,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err := wrench.Generate(out); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
 	if serve {
 		fmt.Println("listening on", bind)
 		router := wrench.NewRouter()

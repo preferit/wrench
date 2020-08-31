@@ -1,18 +1,10 @@
 package wrench
 
 import (
-	"os"
 	"time"
 
 	. "github.com/gregoryv/web"
 )
-
-func Generate(out string) error {
-	os.MkdirAll(out, 0755)
-	indexPage().SaveTo(out)
-	helpPage().SaveTo(out)
-	return nil
-}
 
 func loginForm() *Element {
 	form := Form(Class("auth"),
