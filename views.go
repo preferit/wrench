@@ -6,17 +6,6 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-func loginForm() *Element {
-	form := Form(Class("auth"),
-		Method("POST"),
-		Action("/api"),
-		Label("Account: "), Input(Name("account")), Br(),
-		Label("Key: "), Input(Name("key"), Type("password")), Br(),
-		Button("Login"),
-	)
-	return form
-}
-
 // When the service started so we know the uptime
 var start = time.Now()
 
@@ -56,6 +45,7 @@ func indexPage() *Page {
 	)
 }
 
+// todo move tidio related API to tidio
 func helpPage() *Page {
 	content := Div(
 		Section(
@@ -157,11 +147,6 @@ func theme() *CSS {
 		"border: 1px #e2e2e2 dotted",
 		"padding: 1em 1em",
 		"background-color: #ffffe6",
-	)
-	css.Style("form.auth label",
-		"display: inline-block",
-		"width: 100px",
-		"line-height: 2.4em",
 	)
 	return css
 }
