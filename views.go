@@ -40,7 +40,13 @@ func (me *ReportsView) Page() *Page {
 	)
 }
 
-func indexPage() *Page {
+func NewIndexView() *IndexView {
+	return &IndexView{}
+}
+
+type IndexView struct{}
+
+func (me *IndexView) Page() *Page {
 	content := Div(
 		H1("Wrench"),
 		A(Href("reports/"), "Reports"),

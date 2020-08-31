@@ -18,7 +18,10 @@ func NewRouter() *mux.Router {
 }
 
 // ServeIndex serves the root index page
-func ServeIndex(w http.ResponseWriter, r *http.Request) { indexPage().WriteTo(w) }
+func ServeIndex(w http.ResponseWriter, r *http.Request) {
+	view := NewIndexView()
+	view.Page().WriteTo(w)
+}
 
 // ServeReports serves the reports front page
 func ServeReports(w http.ResponseWriter, r *http.Request) {
