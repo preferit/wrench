@@ -21,7 +21,12 @@ func NewRouter() *mux.Router {
 func ServeIndex(w http.ResponseWriter, r *http.Request) { indexPage().WriteTo(w) }
 
 // ServeReports serves the reports front page
-func ServeReports(w http.ResponseWriter, r *http.Request) { reportsPage().WriteTo(w) }
+func ServeReports(w http.ResponseWriter, r *http.Request) {
+	acc, _, _ := r.BasicAuth()
+	view := NewReportsView(acc)
+	view.Reports = append(view.Reports, Report{Text: "raw report here..."})
+	view.Page().WriteTo(w)
+}
 
 // ServeHelp serves the help page
 func ServeHelp(w http.ResponseWriter, r *http.Request) { helpPage().WriteTo(w) }

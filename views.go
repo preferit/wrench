@@ -6,22 +6,33 @@ import (
 	. "github.com/gregoryv/web"
 )
 
-// When the service started so we know the uptime
-var start = time.Now()
-
-func footer() *Element {
-	return Footer(
-		"Uptime: ",
-		time.Since(start).Round(time.Second).String(),
-	)
+func NewReportsView(acc string) *ReportsView {
+	return &ReportsView{
+		Account: acc,
+		Reports: []Report{},
+	}
 }
 
-func reportsPage() *Page {
+type ReportsView struct {
+	Account string
+	Reports []Report
+}
+
+type Report struct {
+	Text string
+}
+
+func (me *ReportsView) Page() *Page {
 	content := Div(
 		H1("Reports"),
+		"Logged in as: ", B(me.Account),
 	)
-	return NewPage(
-		"reports.html",
+
+	for _, report := range me.Reports {
+		content.With(Pre(report.Text))
+	}
+
+	return NewPage("",
 		Html(
 			Head(Style(theme())),
 			Body(content, footer()),
@@ -149,4 +160,14 @@ func theme() *CSS {
 		"background-color: #ffffe6",
 	)
 	return css
+}
+
+// When the service started so we know the uptime
+var start = time.Now()
+
+func footer() *Element {
+	return Footer(
+		"Uptime: ",
+		time.Since(start).Round(time.Second).String(),
+	)
 }
