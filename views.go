@@ -17,6 +17,16 @@ func loginForm() *Element {
 	return form
 }
 
+// When the service started so we know the uptime
+var start = time.Now()
+
+func footer() *Element {
+	return Footer(
+		"Uptime: ",
+		time.Since(start).Round(time.Second).String(),
+	)
+}
+
 func reportsPage() *Page {
 	content := Div(
 		H1("Reports"),
@@ -24,15 +34,8 @@ func reportsPage() *Page {
 	return NewPage(
 		"reports.html",
 		Html(
-			Head(
-				Style(theme()),
-			),
-			Body(content,
-				Footer(
-					"Generated: ",
-					time.Now().Round(time.Second).String(),
-				),
-			),
+			Head(Style(theme())),
+			Body(content, footer()),
 		),
 	)
 }
@@ -48,12 +51,7 @@ func indexPage() *Page {
 			Head(
 				Style(theme()),
 			),
-			Body(content,
-				Footer(
-					"Generated: ",
-					time.Now().Round(time.Second).String(),
-				),
-			),
+			Body(content, footer()),
 		),
 	)
 }
@@ -128,13 +126,7 @@ Authorization: {auth}`),
 			Head(
 				Style(theme()),
 			),
-			Body(content,
-
-				Footer(
-					"Generated: ",
-					time.Now().Round(time.Second).String(),
-				),
-			),
+			Body(content, footer()),
 		),
 	)
 }
