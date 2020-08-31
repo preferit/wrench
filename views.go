@@ -25,10 +25,30 @@ func loginForm() *Element {
 	return form
 }
 
+func reportsPage() *Page {
+	content := Div(
+		H1("Reports"),
+	)
+	return NewPage(
+		"reports.html",
+		Html(
+			Head(
+				Style(theme()),
+			),
+			Body(content,
+				Footer(
+					"Generated: ",
+					time.Now().Round(time.Second).String(),
+				),
+			),
+		),
+	)
+}
+
 func indexPage() *Page {
 	content := Div(
-		H1("tidio"),
-		loginForm(),
+		H1("Wrench"),
+		A(Href("reports/"), "Reports"),
 	)
 	return NewPage(
 		"index.html",

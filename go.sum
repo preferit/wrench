@@ -28,6 +28,7 @@ github.com/googleapis/gnostic v0.0.0-20170729233727-0c5108395e2d/go.mod h1:sJBsC
 github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
 github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
 github.com/gregoryv/asserter v0.1.0/go.mod h1:iLD46IKZjjleTkmDikemRaDZQldDrq8uwTnygV/hC/M=
+github.com/gregoryv/asserter v0.3.1-0.20200710143923-04ff8e6a2edf h1:JXCOH2Rgim6Nxv1SaFf/ytx+ANMoVSELd/zFALKsdDw=
 github.com/gregoryv/asserter v0.3.1-0.20200710143923-04ff8e6a2edf/go.mod h1:WjMhNLh0zjyvgOQpWWx8Om0n7jlgMzTn7qgKhJeH8ew=
 github.com/gregoryv/cli v0.0.0-20180329083318-9f0f54cf147f/go.mod h1:zrYlwj1/vKPPQ7V++Jw7nIPSwM61ERFQmJ8YAh6zibA=
 github.com/gregoryv/cmdline v0.0.0-20200822134937-e77bcfd6d968 h1:EncwlkTqRhIw7jZ3uX6dgRIVNbeknBBNB717fzxfk4s=
