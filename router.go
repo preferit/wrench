@@ -20,7 +20,7 @@ func NewRouter() *mux.Router {
 // ServeIndex serves the root index page
 func ServeIndex(w http.ResponseWriter, r *http.Request) {
 	view := NewIndexView()
-	view.Page().WriteTo(w)
+	view.Render().WriteTo(w)
 }
 
 // ServeReports serves the reports front page
@@ -28,11 +28,14 @@ func ServeReports(w http.ResponseWriter, r *http.Request) {
 	acc, _, _ := r.BasicAuth()
 	view := NewReportsView(acc)
 	view.Reports = append(view.Reports, Report{Text: "raw report here..."})
-	view.Page().WriteTo(w)
+	view.Render().WriteTo(w)
 }
 
 // ServeHelp serves the help page
-func ServeHelp(w http.ResponseWriter, r *http.Request) { helpPage().WriteTo(w) }
+func ServeHelp(w http.ResponseWriter, r *http.Request) {
+	view := NewHelpView()
+	view.Render().WriteTo(w)
+}
 
 // BasicAuth middleware
 func BasicAuth(next http.HandlerFunc, account, password, realm string) http.HandlerFunc {
