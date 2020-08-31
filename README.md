@@ -1,1 +1,3 @@
-wrench - web user interface fot timesheet management
+wrench - web user interface for timesheet management
+
+Service found at https://wrench.preferit.se
