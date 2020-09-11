@@ -1,6 +1,10 @@
 package wrench
 
 import (
+	"bytes"
+
+	"github.com/gregoryv/draw/design"
+	"github.com/gregoryv/draw/shape"
 	. "github.com/gregoryv/web"
 	"github.com/gregoryv/web/toc"
 )
@@ -14,8 +18,13 @@ type HelpView struct{}
 func (me *HelpView) Render() *Page {
 	navigation := Nav()
 	content := Div(
-		H1("Help"),
+		H1("Wrench help"),
 		navigation,
+
+		Section(
+			H2("Design"),
+			inline(NewComponentsDiagram()),
+		),
 
 		Section(
 			H2("Timesheet file format"),
@@ -64,9 +73,36 @@ func (me *HelpView) Render() *Page {
 		"help.html",
 		Html(
 			Head(
+				Title("Wrench help"),
 				Style(theme()),
 			),
 			Body(content, footer()),
 		),
 	)
+}
+
+func NewComponentsDiagram() *design.Diagram {
+	var (
+		d      = design.NewDiagram()
+		tidio  = shape.NewComponent("tidio.preferit.se")
+		wrench = shape.NewComponent("wrench.preferit.se")
+		// todo add internet shape
+	)
+	d.Place(tidio).At(20, 20)
+	d.Place(shape.NewNote("Domain logic")).RightOf(tidio)
+	d.Place(wrench).Below(tidio)
+	d.Place(shape.NewNote("Web user interface")).RightOf(wrench)
+	d.SetCaption("System components")
+	return &d
+}
+
+// inline writes SVG of a diagram to a string with style applied.
+func inline(d interface{}) string {
+	var buf bytes.Buffer
+	switch d := d.(type) {
+	case *design.Diagram:
+		d.Style.SetOutput(&buf)
+		d.WriteSVG(&d.Style)
+	}
+	return buf.String()
 }
