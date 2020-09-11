@@ -83,15 +83,20 @@ func (me *HelpView) Render() *Page {
 
 func NewComponentsDiagram() *design.Diagram {
 	var (
-		d      = design.NewDiagram()
-		tidio  = shape.NewComponent("tidio.preferit.se")
-		wrench = shape.NewComponent("wrench.preferit.se")
-		// todo add internet shape
+		d       = design.NewDiagram()
+		tidio   = shape.NewComponent("tidio.preferit.se")
+		wrench  = shape.NewComponent("wrench.preferit.se")
+		inet    = shape.NewInternet()
+		browser = shape.NewComponent("Browser")
 	)
-	d.Place(tidio).At(20, 20)
+	d.Place(tidio).At(80, 20)
 	d.Place(shape.NewNote("Domain logic")).RightOf(tidio)
 	d.Place(wrench).Below(tidio)
 	d.Place(shape.NewNote("Web user interface")).RightOf(wrench)
+	d.Place(inet).Below(wrench)
+	d.Place(browser).Below(inet)
+	d.VAlignCenter(tidio, wrench, inet, browser)
+
 	d.SetCaption("System components")
 	return &d
 }
