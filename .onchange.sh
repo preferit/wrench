@@ -13,3 +13,4 @@ esac
 go install ./cmd/wrench
 go test -coverprofile /tmp/c.out ./...
 uncover /tmp/c.out
+killall wrench

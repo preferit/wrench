@@ -1,6 +1,9 @@
 package wrench
 
-import . "github.com/gregoryv/web"
+import (
+	. "github.com/gregoryv/web"
+	"github.com/gregoryv/web/toc"
+)
 
 func NewHelpView() *HelpView {
 	return &HelpView{}
@@ -8,30 +11,11 @@ func NewHelpView() *HelpView {
 
 type HelpView struct{}
 
-// todo move tidio related API to tidio
 func (me *HelpView) Render() *Page {
+	navigation := Nav()
 	content := Div(
-		Section(
-			H2("Timesheets"),
-			P(
-				``,
-			),
-			H3("Create or update"),
-			Pre(`HTTP/1.1 POST {host}/api/timesheets/{account}/{yyyymm}.timesheet
-Authorization: {auth}
-
--- body contains timesheet --`),
-
-			H3("Read specific timesheet"),
-			Pre(`HTTP/1.1 GET {host}/api/timesheets/{account}/{yyyymm}.timesheet
-Authorization: {auth}`),
-			"Responds with timesheet",
-
-			H3("List timesheets of a specific user"),
-			Pre(`HTTP/1.1 GET {host}/api/timesheets/{account}/
-Authorization: {auth}`),
-			`Responds with json {"timesheets": []}`,
-		),
+		H1("Help"),
+		navigation,
 
 		Section(
 			H2("Timesheet file format"),
@@ -72,6 +56,9 @@ Authorization: {auth}`),
 			),
 		),
 	)
+
+	toc.GenerateIDs(content, "h2", "h3")
+	navigation.With(toc.ParseTOC(content, "h2"))
 
 	return NewPage(
 		"help.html",

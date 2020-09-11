@@ -51,6 +51,8 @@ github.com/gregoryv/qual v0.2.1/go.mod h1:5M5kejbZgxtswBGeoXC1yh4CP94W3FFv5o60Bf
 github.com/gregoryv/qual v0.3.1/go.mod h1:dB0ZUMaE5qieQ975kKI7A4CDfg6wgcsPcSlY1SWuq9Y=
 github.com/gregoryv/web v0.9.0 h1:LaZDImhdrkSFtvNT8//aRMAox258olhXgGQN+j1c1uk=
 github.com/gregoryv/web v0.9.0/go.mod h1:rQLMOfw2Hny0Nvb24COmX96jKJyhNOfC/jAHITBn3vc=
+github.com/gregoryv/web v0.9.1-0.20200611161635-f2440d121c07 h1:Hr1xs31EphdQSfGrRru70LuJKPRoT7LjP4BrJk/UozE=
+github.com/gregoryv/web v0.9.1-0.20200611161635-f2440d121c07/go.mod h1:rQLMOfw2Hny0Nvb24COmX96jKJyhNOfC/jAHITBn3vc=
 github.com/gregoryv/workdir v0.2.0/go.mod h1:qX7yFN0yqysNfEr2F5Tta9+5K8oueS/sqBmdiExBoYA=
 github.com/hashicorp/golang-lru v0.5.1/go.mod h1:/m3WP610KZHVQ1SGc6re/UDhFvYD7pJ4Ao+sR/qLZy8=
 github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
