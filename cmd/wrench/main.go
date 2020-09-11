@@ -15,11 +15,16 @@ func main() {
 	cli.Option("-o").String("/tmp") // deprecated, here until systemd is updated
 	serve := cli.Flag("-s, --serve")
 	bind := cli.Option("-b, --bind").String(":8081")
+	help := cli.Flag("-h, --help")
+
 	if err := cli.Error(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-
+	if help {
+		cli.WriteUsageTo(os.Stdout)
+		os.Exit(0)
+	}
 	if serve {
 		fmt.Println("listening on", bind)
 		router := wrench.NewRouter()
