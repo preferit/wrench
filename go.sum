@@ -39,6 +39,8 @@ github.com/gregoryv/draw v0.12.1-0.20200911185019-aa2071b77ca6 h1:bvriz7zZp18AUV
 github.com/gregoryv/draw v0.12.1-0.20200911185019-aa2071b77ca6/go.mod h1:aIBRpJ6WIOpnpgHjb2t2kthKZM74x55TGea+ZIElVwg=
 github.com/gregoryv/draw v0.12.1-0.20200911203241-62135a59d21b h1:DeZogPUc/lghnNREFDLkilstL5hORnWSLSFnYVZ2Wak=
 github.com/gregoryv/draw v0.12.1-0.20200911203241-62135a59d21b/go.mod h1:aIBRpJ6WIOpnpgHjb2t2kthKZM74x55TGea+ZIElVwg=
+github.com/gregoryv/draw v0.13.0 h1:kSuKtJv6N6ibz77UrtLK+fVvO4SLsaffdk+RfNZDEvA=
+github.com/gregoryv/draw v0.13.0/go.mod h1:ZjcU2lJq2eA+jQAdIslryahmUzp8aAvTrBdEZIQ4V6I=
 github.com/gregoryv/ex v0.3.0/go.mod h1:m5suTcbRkA2j4NZogj/DYTFmh4Ff9U29tpRzeiYlx+0=
 github.com/gregoryv/find v0.0.0-20180328085109-1bbc2d70c482/go.mod h1:/xxQlO62bzxhyabf2iKJzGJa+VAJy25spLI/6ICTrxU=
 github.com/gregoryv/find v0.1.1 h1:ETW9JKrNN1zRbySlTKELfqC+pJHhIQYj8mZo5F93GpQ=
@@ -46,6 +48,7 @@ github.com/gregoryv/find v0.1.1/go.mod h1:ZxH/FkVt6VM//T7edeCqCc2dJRrLAtCYvtvdM6
 github.com/gregoryv/gocyclo v0.0.0-20180305144948-0be7902fabdc/go.mod h1:x/QA8cT1gfn/XriQ/CVNX7I8IM4Z2YJAAEWFym2clZI=
 github.com/gregoryv/golden v0.3.0/go.mod h1:gwYSBOmvGF+fefo7P1PyBpAqqvYx6S85dmkUaI6QMU4=
 github.com/gregoryv/golden v0.3.1/go.mod h1:gwYSBOmvGF+fefo7P1PyBpAqqvYx6S85dmkUaI6QMU4=
+github.com/gregoryv/golden v0.4.1/go.mod h1:gwYSBOmvGF+fefo7P1PyBpAqqvYx6S85dmkUaI6QMU4=
 github.com/gregoryv/must v0.1.0/go.mod h1:1HQ/4FuSFr52clBKUWSaibQTnZRKnWtbBZRxC5cii1A=
 github.com/gregoryv/nexus v0.3.0 h1:/V/TwUbKB/VhS2dt1HMTLWx2mDeaNQyoayPgrS664/g=
 github.com/gregoryv/nexus v0.3.0/go.mod h1:DJ2Ia6WpPX26edFW6LCl+9nYyX2h6Ot/kyJ83J+SAL0=
