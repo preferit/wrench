@@ -2,18 +2,16 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 
 	"github.com/gregoryv/cmdline"
+	"github.com/gregoryv/fox"
 	"github.com/preferit/wrench"
 )
 
 func main() {
 	cli := cmdline.New(os.Args...)
-	cli.Option("-o").String("/tmp") // deprecated, here until systemd is updated
-	serve := cli.Flag("-s, --serve")
 	bind := cli.Option("-b, --bind").String(":8081")
 	help := cli.Flag("-h, --help")
 
@@ -25,9 +23,15 @@ func main() {
 		cli.WriteUsageTo(os.Stdout)
 		os.Exit(0)
 	}
-	if serve {
-		fmt.Println("listening on", bind)
-		router := wrench.NewRouter()
-		log.Fatal(http.ListenAndServe(bind, router))
+
+	sl := fox.NewSyncLog(os.Stderr)
+	wrench.DefaultLogger = sl
+
+	sl.Log("listening on", bind)
+	router := wrench.NewRouter()
+	err := http.ListenAndServe(bind, router)
+	if err != nil {
+		sl.Log(err)
+		os.Exit(1)
 	}
 }
