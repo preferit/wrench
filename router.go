@@ -4,16 +4,18 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/gregoryv/fox/foxhttp"
 )
 
 func NewRouter() *Router {
 	r := Router{mux.NewRouter()}
 	auth := NewBasicAuth("john", "secret", "Wrench")
+	log := foxhttp.NewRouteLog(DefaultLogger)
 
-	r.HandleFunc("/", ServeIndex)
-	r.WrapFunc("/reports", ServeReports, auth)
-	r.WrapFunc("/reports/", ServeReports, auth)
-	r.HandleFunc("/help", ServeHelp)
+	r.WrapFunc("/", ServeIndex, log)
+	r.WrapFunc("/reports", ServeReports, log, auth)
+	r.WrapFunc("/reports/", ServeReports, log, auth)
+	r.WrapFunc("/help", ServeHelp, log)
 	return &r
 }
 

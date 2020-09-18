@@ -28,6 +28,7 @@ github.com/googleapis/gnostic v0.0.0-20170729233727-0c5108395e2d/go.mod h1:sJBsC
 github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
 github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
 github.com/gregoryv/asserter v0.1.0/go.mod h1:iLD46IKZjjleTkmDikemRaDZQldDrq8uwTnygV/hC/M=
+github.com/gregoryv/asserter v0.2.3-0.20200604204219-cc98dbaa395f/go.mod h1:WjMhNLh0zjyvgOQpWWx8Om0n7jlgMzTn7qgKhJeH8ew=
 github.com/gregoryv/asserter v0.3.1-0.20200710143923-04ff8e6a2edf h1:JXCOH2Rgim6Nxv1SaFf/ytx+ANMoVSELd/zFALKsdDw=
 github.com/gregoryv/asserter v0.3.1-0.20200710143923-04ff8e6a2edf/go.mod h1:WjMhNLh0zjyvgOQpWWx8Om0n7jlgMzTn7qgKhJeH8ew=
 github.com/gregoryv/cli v0.0.0-20180329083318-9f0f54cf147f/go.mod h1:zrYlwj1/vKPPQ7V++Jw7nIPSwM61ERFQmJ8YAh6zibA=
@@ -39,6 +40,10 @@ github.com/gregoryv/ex v0.3.0/go.mod h1:m5suTcbRkA2j4NZogj/DYTFmh4Ff9U29tpRzeiYl
 github.com/gregoryv/find v0.0.0-20180328085109-1bbc2d70c482/go.mod h1:/xxQlO62bzxhyabf2iKJzGJa+VAJy25spLI/6ICTrxU=
 github.com/gregoryv/find v0.1.1 h1:ETW9JKrNN1zRbySlTKELfqC+pJHhIQYj8mZo5F93GpQ=
 github.com/gregoryv/find v0.1.1/go.mod h1:ZxH/FkVt6VM//T7edeCqCc2dJRrLAtCYvtvdM6Hk398=
+github.com/gregoryv/fox v0.5.0 h1:xQEn6OKH8ds/liHzCl2Orf1lRE1UZ5RuqrHh7OP0ETc=
+github.com/gregoryv/fox v0.5.0/go.mod h1:s96q/0H5V5vdMLYr7Z44DKlu3mkN4sTu5PCw9iTveFY=
+github.com/gregoryv/fox v0.5.1-0.20200918082722-970fad18326f h1:8cOP/X8Fkt/W5eJQitSOU5HUpo30j6aepai001nPEnc=
+github.com/gregoryv/fox v0.5.1-0.20200918082722-970fad18326f/go.mod h1:s96q/0H5V5vdMLYr7Z44DKlu3mkN4sTu5PCw9iTveFY=
 github.com/gregoryv/gocyclo v0.0.0-20180305144948-0be7902fabdc h1:chhF7lRELMFmxWl3AWbZ2UT1xQtN9nqFGyhL3jwGWDs=
 github.com/gregoryv/gocyclo v0.0.0-20180305144948-0be7902fabdc/go.mod h1:x/QA8cT1gfn/XriQ/CVNX7I8IM4Z2YJAAEWFym2clZI=
 github.com/gregoryv/golden v0.3.0/go.mod h1:gwYSBOmvGF+fefo7P1PyBpAqqvYx6S85dmkUaI6QMU4=
