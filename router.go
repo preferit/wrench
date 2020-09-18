@@ -1,20 +1,39 @@
 package wrench
 
 import (
-	"crypto/subtle"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
-func NewRouter() *mux.Router {
-	r := mux.NewRouter()
-	realm := "Wrench"
+func NewRouter() *Router {
+	r := Router{mux.NewRouter()}
+	auth := NewBasicAuth("john", "secret", "Wrench")
+
 	r.HandleFunc("/", ServeIndex)
-	r.HandleFunc("/reports", BasicAuth(ServeReports, "john", "secret", realm))
-	r.HandleFunc("/reports/", BasicAuth(ServeReports, "john", "secret", realm))
+	r.WrapFunc("/reports", ServeReports, auth)
+	r.WrapFunc("/reports/", ServeReports, auth)
 	r.HandleFunc("/help", ServeHelp)
-	return r
+	return &r
+}
+
+type Router struct {
+	*mux.Router
+}
+
+// WrapFunc registers the path with middlewares prepended if any are given
+func (me *Router) WrapFunc(path string, h http.HandlerFunc, mw ...middleware) {
+	var handler http.Handler = http.HandlerFunc(h)
+	if len(mw) > 0 {
+		for l := len(mw) - 1; l >= 0; l-- {
+			handler = mw[l].Middleware(handler)
+		}
+	}
+	me.Router.Handle(path, handler)
+}
+
+type middleware interface {
+	Middleware(http.Handler) http.Handler
 }
 
 // ServeIndex serves the root index page
@@ -35,20 +54,4 @@ func ServeReports(w http.ResponseWriter, r *http.Request) {
 func ServeHelp(w http.ResponseWriter, r *http.Request) {
 	view := NewHelpView()
 	view.Render().WriteTo(w)
-}
-
-// BasicAuth middleware
-func BasicAuth(next http.HandlerFunc, account, password, realm string) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		acc, pass, ok := r.BasicAuth()
-		accOk := subtle.ConstantTimeCompare([]byte(acc), []byte(account)) == 1
-		passOk := subtle.ConstantTimeCompare([]byte(pass), []byte(password)) == 1
-		if !ok || !accOk || !passOk {
-			w.Header().Set("WWW-Authenticate", `Basic realm="`+realm+`"`)
-			w.WriteHeader(401)
-			w.Write([]byte("Unauthorised.\n"))
-			return
-		}
-		next(w, r)
-	}
 }
